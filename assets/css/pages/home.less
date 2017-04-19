@@ -1,0 +1,543 @@
+@import "../components/common.less";
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#page,
+#content,
+#content > .container.intro-holder{
+    height: 100%;
+    overflow: hidden;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  intro start                               */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.intro-holder{
+    position: relative;
+    background: @darkGrey;
+    & > .intro,
+    & > .projects{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: @darkGrey;
+        overflow: hidden;
+    }
+    & > .intro{
+        z-index: 15;
+        & > h1{
+            display: block;
+            width: 60px;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            pointer-events: none;
+            overflow: hidden;
+            &:before{
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: "";
+                background: @gold;
+                transition: all .8s @easing 0s;
+                transform: translateY(-100%);
+                overflow: hidden;
+            }
+            .letter{
+                display: block;
+                width: 100%;
+                height: auto;
+                position: relative;
+                font-family: "Airborne";
+                font-size: 4.5em;
+                font-size: 6.6vh;
+                color: @gold;
+                text-align: center;
+                opacity: 0;
+                transition: all .4s @easing .4s;
+                overflow: hidden;
+                & + .letter{ margin-top: 6px; }
+            }
+        }
+        & > .info-holder{
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 1;
+            transition: all .5s @easing .5s;
+            transform: translateY(-50%);
+            visibility: visible;
+            backface-visibility: hidden;
+            overflow: hidden;
+            .text-splitter{
+                display: block;
+                width: 100%;
+                height: auto;
+                position: relative;
+                box-sizing: border-box;
+                overflow: hidden;
+                & + .text-splitter{ margin-top: 30px; }
+                & > .line{
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 60px;
+                    height: 1px;
+                    position: relative;
+                    background: @lightGrey;
+                    overflow: hidden;
+                    &:before{
+                        display: block;
+                        width: 100%;
+                        height: 1px;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        content: "";
+                        background: @creamWhite;
+                        overflow: hidden;
+                    }
+                }
+                .text{
+                    display: inline-block;
+                    vertical-align: middle;
+                    position: relative;
+                    font-size: 1em;
+                    font-weight: 300;
+                    color: @creamWhite;
+                    letter-spacing: .25em;
+                    text-transform: uppercase;
+                    overflow: hidden;
+                    &:after{
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        content: "";
+                        background: @lightGrey;
+                        overflow: hidden;
+                    }
+                }
+            }
+            &.who-holder{
+                left: 50%;
+                margin-left: -9.375%;
+                transform: translateX(-100%) translateY(-50%);
+                .text-splitter{
+                    .line{
+                        transform-origin: 0% 50%;
+                        transition: all .8s @easing 0s;
+                        transform: scaleX(0);
+                        &:before{
+                            transform-origin: 0% 50%;
+                            transition: all .8s @easing .4s;
+                            transform: scaleX(0);
+                        }
+                    }
+                    .text{
+                        opacity: 0;
+                        transition: all .4s @easing .8s;
+                        &:after{
+                            transition: all 1.2s @easing 0s;
+                            transform: translateX(-100%);
+                        }
+                    }
+                    &:nth-child(1){
+                        .line{ margin-right: 30px; }
+                    }
+                    &:nth-child(2){
+                        .line{ margin: 0 90px 0 30px; }
+                        .text{ margin-left: 30px; }
+                    }
+                    &:nth-child(3){
+                        text-align: right;
+                        .text{ margin-right: 30px; }
+                    }
+                    &:nth-child(4){
+                        text-align: right;
+                        .line{ margin-right: 30px; }
+                    }
+                }
+            }
+            &.slogan-holder{
+                right: 50%;
+                margin-right: -9.375%;
+                transform: translateX(100%) translateY(-50%);
+                .text-splitter{
+                    .line{
+                        transform-origin: 100% 50%;
+                        transition: all .8s @easing 0s;
+                        transform: scaleX(0);
+                        &:before{
+                            transform-origin: 100% 50%;
+                            transition: all .8s @easing .4s;
+                            transform: scaleX(0);
+                        }
+                    }
+                    .text{
+                        opacity: 0;
+                        transition: all .4s @easing .8s;
+                        &:after{
+                            transition: all 1.2s @easing 0s;
+                            transform: translateX(100%);
+                        }
+                    }
+                    &:nth-child(1){
+                        text-align: right;
+                        .line{ margin-left: 30px; }
+                    }
+                    &:nth-child(2){
+                        .line{ margin: 0 30px 0 90px; }
+                        .text{ margin-right: 30px; }
+                    }
+                    &:nth-child(3){
+                        .line{ margin-right: 30px; }
+                    }
+                    &:nth-child(4){
+                        .line{ margin-left: 30px; }
+                    }
+                }
+            }
+        }
+        .hold-loader{
+            display: block;
+            width: 1px;
+            height: 60%;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            z-index: 10;
+            transform: translateX(-50%) scaleY(0);
+            background: @gold;
+            transition: all .5s @easing 0s;
+            overflow: hidden;
+        }
+        .user-tip-holder{
+            display: inline-block;
+            max-width: 150px;
+            position: absolute;
+            left: 50%;
+            bottom: 60px;
+            z-index: 10;
+            font-size: .875em;
+            font-weight: 300;
+            color: @creamWhite;
+            text-align: center;
+            opacity: 1;
+            visibility: visible;
+            transition: all .5s @easing .5s;
+            transform: translateX(-50%);
+            overflow: hidden;
+        }
+    }
+}
+
+#page.__loaded{
+    .intro-holder .intro{
+        & > h1{
+            &:before{ transform: translateY(100%); }
+            .letter{ opacity: 1; }
+        }
+        & > .info-holder{
+            &.who-holder{
+                .text-splitter{
+                    .line,
+                    .line:before{
+                        transform: scaleX(1);
+                    }
+                    .text{
+                        opacity: 1;
+                        &:after{ transform: translateX(100%); }
+                    }
+                }
+            }
+            &.slogan-holder{
+                .text-splitter{
+                    .line,
+                    .line:before{
+                        transform: scaleX(1);
+                    }
+                    .text{
+                        opacity: 1;
+                        &:after{ transform: translateX(-100%); }
+                    }
+                }
+            }
+        }        
+    }
+}
+
+#page{
+    &.holding-start{
+        
+    }
+    &.holding-active{
+        
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  intro end                                 */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  carousel start                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.intro-holder{
+    .projects{
+        & > .carousel-holder{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            cursor: move;
+            cursor: grab;
+            cursor: -moz-grab;
+            cursor: -webkit-grab;
+            overflow: hidden;
+            &:active{
+                cursor: grabbing;
+                cursor: -moz-grabbing;
+                cursor: -webkit-grabbing;
+            }
+            .carousel{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+                .carousel-item{
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    background: @darkGrey;
+                    overflow: hidden;
+                    .case-holder{
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        overflow: hidden;
+                        & > .bg-holder{
+                            width: 100%;
+                            height: 100%;
+                            position: relative;
+                            overflow: hidden;
+                            &:after{
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                content: "";
+                                background: fade(@darkGrey, 90%);
+                                overflow: hidden;
+                            }
+                        }
+                        & > .info-holder{
+                            width: 100%;
+                            height: auto;
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            z-index: 5;
+                            padding: 0 6.25%;
+                            transform: translateY(-50%);
+                            backface-visibility: hidden;
+                            box-sizing: border-box;
+                            overflow: hidden;
+                            .info{
+                                display: inline-block;
+                                vertical-align: top;
+                                overflow: hidden;
+                                .upper-title{
+                                    display: block;
+                                    width: 100%;
+                                    height: auto;
+                                    font-size: 1em;
+                                    font-weight: 400;
+                                    color: @creamWhite;
+                                    opacity: 0;
+                                    text-transform: uppercase;
+                                    transition: all .5s @easing 0s;
+                                    visibility: hidden;
+                                    overflow: hidden;
+                                    &:before{
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        width: 120px;
+                                        height: 1px;
+                                        content: "";
+                                        margin-right: 30px;
+                                        background: @creamWhite;
+                                        transition: all .5s @easing 0s;
+                                        transform-origin: 0% 50%;
+                                        transform: scaleX(0);
+                                        overflow: hidden;
+                                    }
+                                }
+                                h2{
+                                    font-size: 4.5em;
+                                    font-weight: 500;
+                                    text-transform: uppercase;
+                                    color: @creamWhite;
+                                    margin: 30px 0 45px;
+                                    opacity: 0;
+                                    transition: all .5s @easing 0s;
+                                    visibility: hidden;
+                                }
+                                a{
+                                    display: inline-block;
+                                    float: right;
+                                    margin-right: 60px;
+                                    font-size: .875em;
+                                    font-weight: 300;
+                                    letter-spacing: .64em;
+                                    text-transform: uppercase;
+                                    color: @gold;
+                                    opacity: 0;
+                                    transition: all .5s @easing 0s;
+                                    visibility: hidden;
+                                }
+                            }
+                        }
+                    }
+                    &.active{
+                        .case-holder{
+                            & > .info-holder{
+                                .info{
+                                    .upper-title{
+                                        opacity: 1;
+                                        visibility: visible;
+                                        transition: all .5s @easing 0s; 
+                                        &:before{
+                                            transform: scaleX(1);
+                                            transition: all .5s @easing .5s;
+                                        }
+                                    }
+                                    h2{
+                                        opacity: 1;
+                                        visibility: visible;
+                                        transition: all .5s @easing .5s;
+                                    }
+                                    a{
+                                        opacity: 1;
+                                        visibility: visible;
+                                        transition: all .5s @easing .5s;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .counter-holder{
+                width: 60px;
+                height: auto;
+                position: absolute;
+                top: 50%;
+                right: 60px;
+                z-index: 10;
+                transform: translateY(-50%);
+                overflow: hidden;
+                .counter-list,
+                .counter-list .counter-item,
+                .counter-list .counter-item .number{
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    overflow: hidden;
+                }
+                .counter-list{
+                    .counter-item{
+                        cursor: pointer;
+                        & + .counter-item{ margin-top: 30px; }
+                        .number{
+                            font-size: .875em;
+                            color: @lightGrey;
+                            font-weight: 500;
+                            text-align: right;
+                            transition: all .5s @easing 0s;
+                        }
+                        &.active{
+                            .number{
+                                font-size: 1.875em;
+                                color: @gold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & > .close-button{
+            display: none;
+            width: 45px;
+            height: 45px;
+            position: absolute;
+            left: 50%;
+            bottom: 60px;
+            z-index: 25;
+            border-radius: 50%;
+            background: @creamWhite;
+            transform: translateX(-50%);
+            transition: all .5s @easing 0s;
+            cursor: pointer;
+            overflow: hidden;
+            & > .line{
+                display: block;
+                width: 15px;
+                height: 1px;
+                background: @darkGrey;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -7.5px;
+                transform-origin: 50% 50%;
+                transition: all .5s @easing 0s;
+                overflow: hidden;
+                &:nth-child(1){
+                    transform: rotate(45deg);
+                }
+                &:nth-child(2){
+                    transform: rotate(-45deg);
+                }
+            }
+            &:hover{
+                background: @gold;
+                & > .line{ background: @creamWhite; }
+            }
+        }
+    }
+}
+
+#page{
+    &.holding-active{
+        .projects{
+            & > .close-button{
+                display: block;
+            }
+        }
+    }
+    &.menu-opened{
+        .projects{
+            & > .close-button{
+                display: none;
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  carousel end                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

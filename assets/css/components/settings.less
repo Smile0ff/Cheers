@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+
+@font-face {
+  font-family: "Airborne";
+  src: url("../fonts/airborne.eot");
+  src: url("../fonts/airborne.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/airborne.woff2") format("woff2"),
+       url("../fonts/airborne.woff") format("woff"),
+       url("../fonts/airborne.ttf")  format("truetype"),
+       url("../fonts/airborne.svg#svgFontName") format("svg");
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* fonts start                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+h1, h2, h3, h4, h5, h6,
+p, a, small, span, time,
+input, label, textarea{
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+}
+
+p, a, small, time, span,
+input, textarea, label{
+    font-size: 1em;
+}
+
+a{
+    text-decoration: none;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* fonts end                                  */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* colors start                               */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@darkGrey: #0e1317;
+@lightGrey: #83888a;
+@creamWhite: #fdfdfd;
+@gold: #9f8f59;
+
+@lightGreen: #DFF2BF;
+@darkGreen: #4F8A10;
+@lightRed: #FFBABA;
+@darkRed: #D8000C;
+
+@easing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  colors end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  mixins start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  mixins end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  helpers start                             */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.clearfix{
+    &:after{
+        display: block;
+        height: 0;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        visibility: hidden;
+    }
+}
+figure,
+figure > img,
+img{
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.svg-holder{
+    position: relative;
+    & > svg{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  helpers end                               */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
