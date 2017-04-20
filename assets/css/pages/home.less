@@ -30,6 +30,9 @@
     }
     & > .intro{
         z-index: 15;
+        opacity: 1;
+        transition: all .4s @easing 0s;
+        visibility: visible;
         & > h1{
             display: block;
             width: 60px;
@@ -37,6 +40,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            z-index: 10;
             transform: translateX(-50%) translateY(-50%);
             pointer-events: none;
             overflow: hidden;
@@ -75,10 +79,7 @@
             top: 50%;
             z-index: 10;
             pointer-events: none;
-            opacity: 1;
-            transition: all .5s @easing .5s;
             transform: translateY(-50%);
-            visibility: visible;
             backface-visibility: hidden;
             overflow: hidden;
             .text-splitter{
@@ -96,6 +97,8 @@
                     height: 1px;
                     position: relative;
                     background: @lightGrey;
+                    transition: all .8s @easing .4s;
+                    transform: scaleX(0);
                     overflow: hidden;
                     &:before{
                         display: block;
@@ -106,6 +109,8 @@
                         left: 0;
                         content: "";
                         background: @creamWhite;
+                        transition: all .8s @easing 0s;
+                        transform: scaleX(0);
                         overflow: hidden;
                     }
                 }
@@ -118,6 +123,8 @@
                     color: @creamWhite;
                     letter-spacing: .25em;
                     text-transform: uppercase;
+                    opacity: 0;
+                    transition: all .4s @easing .8s;
                     overflow: hidden;
                     &:after{
                         display: block;
@@ -128,6 +135,7 @@
                         left: 0;
                         content: "";
                         background: @lightGrey;
+                        transition: all 1.2s @easing 0s;
                         overflow: hidden;
                     }
                 }
@@ -137,24 +145,11 @@
                 margin-left: -9.375%;
                 transform: translateX(-100%) translateY(-50%);
                 .text-splitter{
-                    .line{
+                    .line,
+                    .line:before{
                         transform-origin: 0% 50%;
-                        transition: all .8s @easing 0s;
-                        transform: scaleX(0);
-                        &:before{
-                            transform-origin: 0% 50%;
-                            transition: all .8s @easing .4s;
-                            transform: scaleX(0);
-                        }
                     }
-                    .text{
-                        opacity: 0;
-                        transition: all .4s @easing .8s;
-                        &:after{
-                            transition: all 1.2s @easing 0s;
-                            transform: translateX(-100%);
-                        }
-                    }
+                    .text:after{ transform: translateX(-100%); }
                     &:nth-child(1){
                         .line{ margin-right: 30px; }
                     }
@@ -177,24 +172,11 @@
                 margin-right: -9.375%;
                 transform: translateX(100%) translateY(-50%);
                 .text-splitter{
-                    .line{
+                    .line,
+                    .line:before{
                         transform-origin: 100% 50%;
-                        transition: all .8s @easing 0s;
-                        transform: scaleX(0);
-                        &:before{
-                            transform-origin: 100% 50%;
-                            transition: all .8s @easing .4s;
-                            transform: scaleX(0);
-                        }
                     }
-                    .text{
-                        opacity: 0;
-                        transition: all .4s @easing .8s;
-                        &:after{
-                            transition: all 1.2s @easing 0s;
-                            transform: translateX(100%);
-                        }
-                    }
+                    .text:after{ transform: translateX(100%); }
                     &:nth-child(1){
                         text-align: right;
                         .line{ margin-left: 30px; }
@@ -212,18 +194,30 @@
                 }
             }
         }
-        .hold-loader{
-            display: block;
-            width: 1px;
-            height: 60%;
+        & > .short-about-info{
+            display: inline-block;
             position: absolute;
-            top: 20%;
-            left: 50%;
+            top: 50%;
             z-index: 10;
-            transform: translateX(-50%) scaleY(0);
-            background: @gold;
-            transition: all .5s @easing 0s;
+            font-size: .875em;
+            font-weight: 300;
+            color: @lightGrey;
+            text-transform: uppercase;
+            letter-spacing: .25em;
+            margin-right: -.25em;
+            opacity: 0;
+            transition: all .8s @easing 0s;
             overflow: hidden;
+            &.left{
+                left: 60px;
+                transform-origin: 0% 0%;
+                transform: rotate(-90deg) translateX(-50%);
+            }
+            &.right{
+                right: 60px;
+                transform-origin: 100% 100%;
+                transform: rotate(-90deg) translateX(50%);
+            }
         }
         .user-tip-holder{
             display: inline-block;
@@ -248,44 +242,79 @@
 #page.__loaded{
     .intro-holder .intro{
         & > h1{
-            &:before{ transform: translateY(100%); }
-            .letter{ opacity: 1; }
+            &:before{
+                transition: all .8s @easing 0s;
+                transform: translateY(100%);
+            }
+            .letter{
+                opacity: 1;
+                transition: all .4s @easing .4s;
+            }
         }
         & > .info-holder{
-            &.who-holder{
-                .text-splitter{
-                    .line,
-                    .line:before{
+            .text-splitter{
+                .line{
+                    transition: all .8s @easing 0s;
+                    transform: scaleX(1);
+                    &:before{
+                        transition: all .8s @easing .4s;
                         transform: scaleX(1);
                     }
-                    .text{
-                        opacity: 1;
-                        &:after{ transform: translateX(100%); }
-                    }
+                }
+                .text{ opacity: 1; }
+            }
+            &.who-holder{
+                .text-splitter{
+                    .text:after{ transform: translateX(100%); }
                 }
             }
             &.slogan-holder{
                 .text-splitter{
-                    .line,
-                    .line:before{
-                        transform: scaleX(1);
-                    }
-                    .text{
-                        opacity: 1;
-                        &:after{ transform: translateX(-100%); }
-                    }
+                    .text:after{ transform: translateX(-100%); }
                 }
             }
+        }
+        & > .short-about-info{
+            opacity: 1;
         }        
     }
 }
 
-#page{
-    &.holding-start{
-        
-    }
-    &.holding-active{
-        
+#page.__loaded.holding-start,
+#page.__loaded.holding-active{
+    .intro-holder .intro{
+        opacity: 0;
+        transition: all .8s @easing 1.2s;
+        visibility: hidden;
+        & > h1{
+            &:before{
+                transition: all 1.2s @easing 0s;
+                transform: translateY(-100%);
+            }
+            .letter{
+                opacity: 0;
+                transition: all .4s @easing .4s;
+            }
+        }
+        & > .info-holder{
+            .text-splitter{
+                .line{
+                    transition: all .8s @easing .4s;
+                    transform: scaleX(0);
+                    &:before{
+                        transition: all .8s @easing 0s;
+                        transform: scaleX(0);
+                    }
+                }
+                .text{
+                    opacity: 0;
+                    &:after{ transform: translateX(0%); }
+                }
+            }
+        }
+        & > .short-about-info{
+            opacity: 0;
+        } 
     }
 }
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -298,6 +327,7 @@
 .intro-holder{
     .projects{
         & > .carousel-holder{
+            display: block;
             width: 100%;
             height: 100%;
             position: relative;
@@ -522,7 +552,7 @@
     }
 }
 
-#page{
+#page.__loaded{
     &.holding-active{
         .projects{
             & > .close-button{
