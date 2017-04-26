@@ -59,19 +59,12 @@ class Carousel{
             height: this.dimension.h
         });
     }
-    setActiveSlide(){
-        this.items.removeClass("active").eq(this.current).addClass("active");
-    }
-    setActiveCounterNumber(){
-        this.counterItems.removeClass("active").eq(this.current).addClass("active");
-    }
     _events(){
         this.el
             .on("mousedown", (e) => this.mouseDown(e))
             .on("mousemove", (e) => this.mouseMove(e))
-            .on("mouseup mouseleave", (e) => this.mouseUp(e));
-
-        this.counterHolder.on("click", ".counter-item", (e) => this.clickCounter(e));
+            .on("mouseup mouseleave", (e) => this.mouseUp(e))
+            .on("click", ".arrow", (e) => this.arrowClick(e));
 
         $(document).on("keydown", (e) => this.keyDown(e));
         $(window).on("resize", (e) => this.resize(e));
@@ -93,9 +86,9 @@ class Carousel{
         this.direction.left = (this.coords.dx <= 0) ? true : false;
         this.direction.top = (this.coords.dy <= 0) ? true : false;
 
-        let positionY = (this.current * this.dimension.h * -1) + this.coords.dy;
+        let positionY = this.getCurrentPosition() + this.coords.dy;
 
-        this.slide(positionY);
+        this.slide(positionY, false);
 
         return false;
     }
@@ -107,10 +100,9 @@ class Carousel{
         if(this.direction.top && (Math.abs(this.coords.dy) >= this.threshold)) this.current++;
         if(!this.direction.top && (Math.abs(this.coords.dy) >= this.threshold)) this.current--;
 
-        if(this.current <= 0) this.current = 0;
-        if(this.current >= this.itemsCount - 1) this.current = this.itemsCount - 1;
+        this.setBoundaries();
 
-        let positionY = this.current * this.dimension.h * -1;
+        let positionY = this.getCurrentPosition();
 
         this.slide(positionY, true);
 
@@ -127,10 +119,9 @@ class Carousel{
         if(keyCode === ARROW_UP) this.current--;
         if(keyCode === ARROW_DOWN) this.current++;
 
-        if(this.current <= 0) this.current = 0;
-        if(this.current >= this.itemsCount - 1) this.current = this.itemsCount - 1;
+        this.setBoundaries();
 
-        let positionY = this.current * this.dimension.h * -1;
+        let positionY = this.getCurrentPosition();
 
         this.slide(positionY, true);
 
@@ -139,10 +130,17 @@ class Carousel{
 
         return false;
     }
-    clickCounter(e){
-        this.current = $(e.currentTarget).index();
+    arrowClick(e){
+        let target = $(e.currentTarget);
 
-        let positionY = this.current * this.dimension.h * -1;
+        this.direction.top = target.hasClass("arrow-top") ? true : false;
+
+        if(this.direction.top) this.current--;
+        if(!this.direction.top) this.current++;
+
+        this.setBoundaries();
+
+        let positionY = this.getCurrentPosition();
         
         this.slide(positionY, true);
 
@@ -158,13 +156,26 @@ class Carousel{
         this.setHolderHeight();
         this.setItemHeight();
 
-        let positionY = this.current * this.dimension.h * -1;
+        let positionY = this.getCurrentPosition();
 
         this.slide(positionY);
         
         return false;
     }
-    slide(y, transition = false){
+    setBoundaries(){
+        if(this.current <= 0) this.current = 0;
+        if(this.current >= this.itemsCount - 1) this.current = this.itemsCount - 1;
+    }
+    getCurrentPosition(){
+        return this.current * this.dimension.h * -1;
+    }
+    setActiveSlide(){
+        this.items.removeClass("active").eq(this.current).addClass("active");
+    }
+    setActiveCounterNumber(){
+        this.counterItems.removeClass("active").eq(this.current).addClass("active");
+    }
+    slide(y, transition){
         this.holder.css({
             transform: "translateY("+ y +"px)",
             transition: transition ? "transform .5s cubic-bezier(0.6, 0.01, 0.44, 0.98)" : "none"

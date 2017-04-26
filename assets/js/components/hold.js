@@ -1,4 +1,4 @@
-const HOLD_TIME = 2200;
+const HOLD_TIME = 2000;
 const LEFT_MOUSE_BUTTON_KEY = 1;
 
 class Hold{
