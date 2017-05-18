@@ -1,10 +1,14 @@
-var path = require("path");
+var path = require('path');
 
-module.exports = {
-    css: path.resolve(__dirname, "assets/css"),
-    fonts: path.resolve(__dirname, "assets/fonts"),
-    images: path.resolve(__dirname, "assets/images"),
-    icons: path.resolve(__dirname, "assets/icons"),
-    js: path.resolve(__dirname, "assets/js"),
-    build: path.resolve(__dirname, "build")
+const base = './';
+
+const urls = {
+    css: path.resolve(base, 'assets/css'),
+    fonts: path.resolve(base, 'assets/fonts'),
+    images: path.resolve(base, 'assets/images'),
+    icons: path.resolve(base, 'assets/icons'),
+    js: path.resolve(base, 'assets/js'),
+    build: path.resolve(base, 'build')
 }
+
+module.exports = urls;
