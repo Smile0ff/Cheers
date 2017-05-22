@@ -2,7 +2,8 @@ var path = require('path'),
     cfg = require('../config');
 
 const pages = {
-    home: 'home.js'
+    home: 'home.js',
+    cases: 'cases.js'
 }
 
 const entries = {};

@@ -1,0 +1,214 @@
+@import "../components/common.less";
+@import "../components/loader.less";
+@import "../components/footer.less";
+@import "../components/categories.less";
+@import "../components/pagination.less";
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+body{
+    height: auto;
+}
+#page{
+    height: 100%;
+    min-height: 100%;
+    overflow: visible;
+}
+
+#content{
+    padding-bottom: 150px;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  Cases start                               */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.cases-holder{
+    padding: 300px 0 150px;
+    box-sizing: border-box;
+    & > .inner{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        .case-list{
+            width: 100%;
+            height: auto;
+            margin-top: 120px;
+            overflow: hidden;
+            .case-holder{
+                width: 100%;
+                height: auto;
+                padding: 0 150px;
+                position: relative;
+                box-sizing: border-box;
+                overflow: hidden;
+                & + .case-holder{ margin-top: 90px; }
+                .award-holder,
+                .link-to-website{
+                    display: inline-block;
+                    position: absolute;
+                    z-index: 5;
+                    font-size: .875em;
+                    letter-spacing: .25em;
+                    color: @lightGrey;
+                    text-transform: uppercase;
+                    overflow: hidden;
+                }
+                .award-holder{
+                    top: 0;
+                    left: 60px;
+                    font-weight: 300;
+                    transform-origin: 0% 0%;
+                    transform: rotate(-90deg) translateX(-100%);
+                }
+                .link-to-website{
+                    top: 50%;
+                    right: 60px;
+                    transition: all .4s @easing 0s;
+                    transform-origin: 100% 0%;
+                    transform: rotate(-90deg) translateX(50%);
+                    &:hover{
+                        color: @gold;
+                    }
+                }
+                & > .inner{
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    overflow: visible;
+                    .year-holder,
+                    .category-holder,
+                    .hashtags-holder{
+                        display: inline-block;
+                        position: absolute;
+                        z-index: 5;
+                        overflow: hidden;
+                    }
+                    .year-holder{
+                        top: 60px;
+                        right: 60px;
+                        font-size: 1.875em;
+                        font-size: 1.5625vw;
+                        font-weight: 500;
+                        color: @lightGrey;
+                    }
+                    .category-holder{
+                        left: 60px;
+                        bottom: 45px;
+                        font-size: 1em;
+                        padding-left: 21px;
+                        color: @lightGrey;
+                        box-sizing: border-box;
+                        overflow: hidden;
+                        &:first-letter{
+                            text-transform: uppercase;
+                        }
+                        &:before{
+                            display: block;
+                            width: 6px;
+                            height: 6px;
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            margin-top: -3px;
+                            content: "";
+                            border-radius: 50%;
+                            background: @lightGrey;
+                            overflow: hidden;
+                        }
+                    }
+                    .hashtags-holder{
+                        right: 60px;
+                        bottom: 45px;
+                        li{
+                            display: inline-block;
+                            & + li{ margin-left: 30px; }
+                            span.hashtag{
+                                display: inline-block;
+                                font-size: 1em;
+                                color: @creamWhite;
+                            }
+                        }
+                    }
+                    .photo-holder{
+                        width: 100%;
+                        height: 0;
+                        position: relative;
+                        padding-top: 56.25%;
+                        overflow: hidden;
+                        & > figure{
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            overflow: hidden;
+                        }
+                    }
+                    .title-holder{
+                        width: 100%;
+                        height: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        z-index: 5;
+                        transform: translateY(-50%);
+                        backface-visibility: hidden;
+                        .type-holder{
+                            display: block;
+                            width: 100%;
+                            height: auto;
+                            margin-bottom: 20px;
+                            padding-left: 90px;
+                            font-size: 1em;
+                            color: @creamWhite;
+                            box-sizing: border-box;
+                            text-transform: uppercase;
+                            overflow: hidden;
+                        }
+                        h2{
+                            max-width: 50%;
+                            font-size: 3.75em;
+                            font-size: 3.125vw;
+                            font-weight: 500;
+                            color: @gold;
+                            padding-left: 90px;
+                            box-sizing: border-box;
+                            text-transform: uppercase;
+                        }
+                        p{
+                            max-width: 50%;
+                            position: relative;
+                            margin-top: 20px;
+                            padding-left: 220px;
+                            font-size: 1em;
+                            box-sizing: border-box;
+                            color: @creamWhite;
+                            &:before{
+                                display: block;
+                                width: 330px;
+                                height: 1px;
+                                position: absolute;
+                                top: 5px;
+                                left: -150px;
+                                content: "";
+                                background: @creamWhite;
+                                overflow: hidden;
+                            }
+                        }
+                        .btn-square{
+                            margin-top: 60px;
+                            padding-left: 220px;
+                        }
+                    }
+                }
+            }
+        }
+    }   
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  Cases end                                 */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

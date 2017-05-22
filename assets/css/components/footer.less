@@ -1,0 +1,85 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  footer start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#footer{
+    width: 100%;
+    height: auto;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 20;
+    overflow: hidden;
+    .socials-holder{
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 45px 60px;
+        float: left;
+        overflow: hidden;
+        li{
+            display: inline-block;
+            vertical-align: top;
+            & + li{ margin-left: 30px; }
+            a{
+                .underlined-link(@lightGrey, @gold, lowercase);
+            }
+        }
+    }
+    .contact-holder{
+        float: right;
+        margin: 0 60px 45px .12em;
+        .sideline-link(@lightGrey, @gold);
+    }
+}
+
+#pinned-footer{
+    width: 100%;
+    height: 150px;
+    position: relative;
+    margin-top: -150px;
+    clear: both;
+    overflow: hidden;
+    & > footer{
+        width: 100%;
+        height: 60px;
+        position: relative;
+        overflow: hidden;
+        & > small{
+            display: inline-block;
+            float: left;
+            font-size: .875em;
+            line-height: 60px;
+            text-transform: uppercase;
+            margin-left: 60px;
+            color: @lightGrey;
+            overflow: hidden;
+        }
+        & > .btn{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        & > .socials-holder{
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            right: 60px;
+            transform: translateY(-50%);
+            backface-visibility: hidden;
+            overflow: hidden;
+            & > ul{
+                display: inline-block;
+                li{
+                    display: inline-block;
+                    & + li{ margin-left: 30px; }
+                    a{
+                        .underlined-link(@lightGrey, @gold, lowercase);
+                    }
+                }
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  footer end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

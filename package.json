@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack-dev-server --env=dev --hot --inline --colors --history-api-fallback --port 3333",
-    "build:prod": "webpack --env=prod --progress --profile --colors"
+    "build:prod": "webpack --env=prod --progress --colors"
   },
   "keywords": [],
   "author": "",

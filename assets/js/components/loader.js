@@ -1,9 +1,10 @@
-const LOAD_TIME = 2000; //specified in common css(#loader-holder)
+const LOAD_TIME = 2000;
 
 class Loader{
 
-    constructor(){
+    constructor(options = {}){
         this.el = $("#page");
+
         this._events();
     }
     _events(){

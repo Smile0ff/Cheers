@@ -1,0 +1,84 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  pagination start                          */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.pagination-holder{
+    width: 100%;
+    height: auto;
+    margin-top: 150px;
+    padding: 0 150px;
+    box-sizing: border-box;
+    overflow: hidden;
+    & > ul{
+        display: block;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        li{
+            display: inline-block;
+            white-space: -1;
+            margin-left: -4px;
+            &:first-child{ margin-left: 0; }
+            & + li{ margin-left: 15px; }
+            a{
+                display: block;
+                width: 60px;
+                height: 60px;
+                position: relative;
+                overflow: hidden;
+                &:before{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    content: "";
+                    border-radius: 50%;
+                    transition: all .4s @easing 0s;
+                    background: @lightGrey;
+                    transform: scale(.2);
+                    overflow: hidden;
+                }
+                .text{
+                    display: inline-block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    z-index: 5;
+                    font-size: .875em;
+                    color: @darkGrey;
+                    background: transparent;
+                    transition: all .4s @easing 0s;
+                    transform: translateX(-50%) translateY(-50%);
+                    opacity: 0;
+                    visibility: hidden;
+                    overflow: hidden;
+                }
+                &:hover{
+                    &:before{
+                        transform: scale(1);
+                        background: @creamWhite;
+                    }
+                    .text{
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+            &.active a{
+                &:before{
+                    transform: scale(1);
+                    background: @gold;
+                }
+                .text{
+                    opacity: 1;
+                    visibility: visible;
+                    color: @creamWhite;
+                }
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  pagination end                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

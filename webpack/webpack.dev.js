@@ -2,7 +2,8 @@ var webpack = require('webpack'),
     path = require('path'),
     cfg = require("../config"),
 
-    entries = require('./entry');
+    entries = require('./entries'),
+    aliases = require('./aliases');
 
 module.exports = {
     entry: entries,
@@ -12,13 +13,8 @@ module.exports = {
         filename: '[name].bundle.dev.js'
     },
     resolve: {
-        alias: {
-            Root: cfg.js,
-            Config: path.join(cfg.js, 'config'),
-            Components: path.join(cfg.js, 'components'),
-            Utility: path.join(cfg.js, 'utility')
-        },
-        extensions: ['.js', '.json', '.jsx', '.css']
+        alias: aliases,
+        extensions: ['.js', '.jsx', '.es6']
     },
     module: {
         rules: [
@@ -29,19 +25,6 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': { 'NODE_ENV': JSON.stringify('development') } 
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            sourceMaps: false,
-            compress: {
-                warnings: false
-            }
-        }),
-        new webpack.optimize.OccurrenceOrderPlugin()
-    ],
     devtool: 'eval',
     cache: false
 }

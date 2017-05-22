@@ -1,4 +1,4 @@
-import getVendor from "Utility/getVendor";
+import getVendor from "@utility/getVendor";
 
 const ARROW_UP = 38;
 const ARROW_DOWN = 40;
